@@ -1,0 +1,14 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: vonpupp
+  company: Haevas
+  description: Install powerpill on archlinux based systems
+  license: BSD
+  platforms:
+  - name: arch
+    versions:
+    - all
+  categories:
+  - system
