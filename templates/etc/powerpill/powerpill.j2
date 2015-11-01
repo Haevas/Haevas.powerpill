@@ -9,8 +9,8 @@
       "--continue=true",
       "--file-allocation=none",
       "--log-level=error",
-      "--max-concurrent-downloads=100",
-      "--max-connection-per-server=5",
+      "--max-concurrent-downloads={{ powerpill_aria2_max_concurrent_downloads }}",
+      "--max-connection-per-server={{ powerpill_aria2_max_connection_per_server }}",
       "--min-split-size=5M",
       "--remote-time=true",
       "--show-console-readout=true"
@@ -22,18 +22,18 @@
     "path": "/usr/bin/pacman"
   },
   "pacserve": {
-    "server": "http://sam.flp.lan:15678"
+    "server": {{ powerpill_server }}
   },
   "powerpill": {
     "ask": true,
-    "reflect databases": false
+    "reflect databases": {{ powerpill_reflect_database }}
   },
   "reflector": {
     "args.unused": [
       "--protocol",
-      "http",
+      {{ powerpill_reflector_database }},
       "--latest",
-      "50"
+      {{ powerpill_reflector_latest }}
     ]
   },
   "rsync": {

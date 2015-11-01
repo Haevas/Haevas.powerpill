@@ -1,1 +1,10 @@
 ---
+
+- name: Enable pacserve-ports.service
+  service: name=pacserve-ports.service state=enabled
+
+- name: Enable pacserve.service
+  service: name=pacserve.service state=enabled
+
+- name: Start pacserve.service
+  service: name=pacserve.service state=started

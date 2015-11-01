@@ -1,0 +1,18 @@
+---
+#- name: Create local user for makepkg
+#  sudo: yes
+#  user: name=makepkg shell=/bin/sh
+
+- name: Copy aur script
+  sudo: yes
+  template: src=templates/etc/powerpill/powerpill.j2 dest=/etc/powerpill/powerpill.json
+
+- name: Initialize GPG if never used
+  command: gpg --list-key
+
+- name: Receive xyne gpg key
+  command: gpg --recv-keys 1D1F0DC78F173680
+
+- name: Install Reflector, Pacserve and Powerpill
+  command: /usr/bin/yaourt -Sy --noconfirm reflector pacserve powerpill
+  become: {{ powerpill_yaourt_user }}
