@@ -1,5 +1,5 @@
 ---
-dependencies: []
+dependencies: [Haevas.yaourt]
 
 galaxy_info:
   author: vonpupp

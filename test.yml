@@ -1,8 +1,13 @@
 ---
 - hosts: all
+  roles:
+    - Haevas.yaourt
+
   tasks:
-  - include: tasks/main.yml
+    - include: tasks/main.yml
+
   handlers:
-  - include: handlers/main.yml
+    - include: handlers/main.yml
+
   vars_files:
-  - defaults/main.yml
+    - defaults/main.yml
