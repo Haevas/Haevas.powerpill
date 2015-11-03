@@ -1,0 +1,13 @@
+---
+- hosts: all
+  roles:
+    - { role: Haevas.yaourt, yaourt_sync_deps: no }
+
+  tasks:
+    - include: tasks/main.yml
+
+  handlers:
+    - include: handlers/main.yml
+
+  vars_files:
+    - defaults/main.yml

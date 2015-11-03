@@ -1,0 +1,48 @@
+{
+  "aria2": {
+    "args": [
+      "--allow-overwrite=true",
+      "--always-resume=false",
+      "--auto-file-renaming=false",
+      "--check-integrity=true",
+      "--conditional-get=true",
+      "--continue=true",
+      "--file-allocation=none",
+      "--log-level=error",
+      "--max-concurrent-downloads={{ powerpill_aria2_max_concurrent_downloads }}",
+      "--max-connection-per-server={{ powerpill_aria2_max_connection_per_server }}",
+      "--min-split-size=5M",
+      "--remote-time=true",
+      "--show-console-readout=true"
+    ],
+    "path": "/usr/bin/aria2c"
+  },
+  "pacman": {
+    "config": "/etc/pacman.conf",
+    "path": "/usr/bin/pacman"
+  },
+  "pacserve": {
+    "server": {% if powerpill_server != None %} {{ powerpill_server | to_nice_json }} {% else %} {{ powerpill_server }} {% endif %}
+  },
+  "powerpill": {
+    "ask": true,
+    "reflect databases": {{ powerpill_reflect_database | to_nice_json }}
+  },
+  "reflector": {
+    "args.unused": [
+      "--protocol",
+      {{ powerpill_reflector_protocol | to_nice_json }},
+      "--latest",
+      {{ powerpill_reflector_latest | to_nice_json }}
+    ]
+  },
+  "rsync": {
+    "args": [
+      "--no-motd",
+      "--progress"
+    ],
+    "db only": true,
+    "path": "/usr/bin/rsync",
+    "servers": []
+  }
+}

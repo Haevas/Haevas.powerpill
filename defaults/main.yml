@@ -1,0 +1,18 @@
+---
+ansible_python_interpreter: /usr/bin/python2
+
+# The role is enabled
+powerpill_enabled: yes
+
+# The server: None or "http://<ip>:15678"
+#powerpill_server: None
+powerpill_server: "http://10.7.22.9:15678"
+
+powerpill_aria2_max_concurrent_downloads: 100
+powerpill_aria2_max_connection_per_server: 5
+
+powerpill_reflect_database: false
+powerpill_reflector_protocol: "http"
+powerpill_reflector_latest: 50
+
+powerpill_yaourt_user: "makepkg"

@@ -1,0 +1,38 @@
+---
+- name: Update packages database
+  sudo: yes
+  pacman: update_cache=yes
+
+- name: Retrieving GPG key
+  command: "{{ item }}"
+  become: yes
+  become_user: "{{ powerpill_yaourt_user }}"
+  with_items:
+    - gpg --list-key
+    - gpg --recv-keys 1D1F0DC78F173680
+
+- name: Install dependencies using pacman
+  sudo: yes
+  pacman: name={{ item }}
+  with_items:
+    - python2-httplib2
+    - pyalpm
+    - aria2
+    - rsync
+    - reflector
+
+- name: Install pacserve
+  yaourt: name={{ item }} state=present
+  become: yes
+  become_user: "{{ powerpill_yaourt_user }}"
+  with_items:
+    - pacserve
+    - powerpill
+
+- name: Copy powerpill config
+  sudo: yes
+  template: src=templates/etc/powerpill/powerpill.j2 dest=/etc/powerpill/powerpill.json
+  notify:
+      - enable pacserve-ports
+      - enable pacserve
+      - restart pacserve
