@@ -4,7 +4,8 @@ Haevas.powerpill
 [![Build Status](http://img.shields.io/travis/Haevas/Haevas.powerpill.svg?style=flat-square)](https://travis-ci.org/Haevas/Haevas.powerpill)
 [![Galaxy](http://img.shields.io/badge/galaxy-Haevas.powerpill-blue.svg?style=flat-square)](https://galaxy.ansible.com/list#/roles/5797)
 
-An Ansible role for installing `powerpill` on Arch Linux based systems.
+An Ansible role for installing `powerpill`, `pacserve` and `reflector` on Arch
+Linux based systems.
 
 #### Requirements & dependencies
 
