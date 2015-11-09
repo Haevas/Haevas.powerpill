@@ -16,3 +16,12 @@ powerpill_reflector_protocol: "http"
 powerpill_reflector_latest: 50
 
 powerpill_yaourt_user: "makepkg"
+yaourt_makepkg_user: "{{ powerpill_yaourt_user }}"
+
+_sudoers_yaourt_makepkg_user:
+  - name: "{{ yaourt_makepkg_user }}"
+    users: ["ALL"]
+
+_sudoers_powerpill_travis_user:
+  - name: "travis"
+    users: ["ALL"]

@@ -1,7 +1,9 @@
 ---
 - hosts: all
   roles:
-    - { role: Haevas.yaourt, yaourt_sync_deps: no }
+    - { role: Haevas.yaourt,
+        yaourt_sync_deps: no,
+      }
 
   tasks:
     - include: tasks/main.yml

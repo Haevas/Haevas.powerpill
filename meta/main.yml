@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - Haevas.yaourt
+  - { role: Haevas.yaourt }
 
 galaxy_info:
   author: vonpupp
