@@ -15,12 +15,16 @@ arch:
     # papyros
     #- papyros-shell
     - python2-pip
-    - ansible
   script:
     #- "sudo archey3"
+    #    - sudo rm /dev/shm
+    #    - sudo mkdir /dev/shm
+    #    - sudo chmod 777 /dev/shm
+    - sudo pip2 install ansible
     - "reflector --verbose -l 20 --sort rate -p http"
 
     - echo localhost > inventory
+    - sudo ansible-galaxy install --force -r requirements.yml -p roles
 
     # Check syntax
     - sudo ansible-playbook --syntax-check -i inventory test.yml
