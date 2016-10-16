@@ -1,7 +1,12 @@
 ---
+is_travis: "{{ lookup('env', 'TRAVIS')|default(false, true) }}"
 
-ansible_python_interpreter: /usr/bin/python2
+# haevas.yaourt variables
+yaourt_enabled: yes                                 # The role is enabled
+yaourt_sync_deps: no                                # Sync db and base-devel
+yaourt_makepkg_user: makepkg                        # The user to build the packages
 
+# haevas.powerpill variables
 powerpill_enabled: yes                                 # The role is enabled
 powerpill_server: None                                 # The server: None or "http://<ip>:15678"
 #powerpill_server: "http://192.168.0.1:15678"           #
@@ -13,4 +18,4 @@ powerpill_reflect_database: false                      #
 powerpill_reflector_protocol: "http"                   #
 powerpill_reflector_latest: "50"                       #
 
-powerpill_yaourt_user: av
+powerpill_yaourt_user: "{{ yaourt_makepkg_user }}"
