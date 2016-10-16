@@ -6,14 +6,14 @@ sudo: required
 arch:
   repos:
     - xyne-any=http://xyne.archlinux.ca/repos/xyne
-    - papyros=http://dash.papyros.io/repos/$repo/$arch
+    #- papyros=http://dash.papyros.io/repos/$repo/$arch
   packages:
     - base
     - reflector
     # aur
-    - archey3-git
+    #- archey3-git
     # papyros
-    - papyros-shell
+    #- papyros-shell
     - python2-pip
     - ansible
   script:
@@ -39,5 +39,4 @@ arch:
     - powerpill --help || exit 1
 
 script:
-  - "bash .travis/arch-travis.sh"
-
+  - "bash .arch-travis/arch-travis.sh"
