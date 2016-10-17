@@ -4,7 +4,7 @@ dependencies: [Haevas.yaourt]
 galaxy_info:
   author: vonpupp
   company: Haevas
-  description: Install powerpill on archlinux based systems
+  description: Install powerpill on Arch Linux based systems
   license: BSD
   platforms:
   - name: arch

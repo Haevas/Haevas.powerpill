@@ -1,12 +1,17 @@
 sudo: required
 
+#matrix:
+#  include:
+#    - os: linux
+#      dist: jessie
+
 # env:
 #   - ARCH_TRAVIS_VERBOSE=1
 
 arch:
   repos:
     - xyne-any=http://xyne.archlinux.ca/repos/xyne
-    #- papyros=http://dash.papyros.io/repos/$repo/$arch
+#    - papyros=http://dash.papyros.io/repos/$repo/$arch
   packages:
     - base
     - reflector
@@ -17,14 +22,16 @@ arch:
     - python2-pip
   script:
     #- "sudo archey3"
-    #    - sudo rm /dev/shm
-    #    - sudo mkdir /dev/shm
-    #    - sudo chmod 777 /dev/shm
+    - sudo rm /dev/shm
+    - sudo mkdir /dev/shm
+    - sudo chmod 777 /dev/shm
     - sudo pip2 install ansible
     - "reflector --verbose -l 20 --sort rate -p http"
 
+    - which python2
+
     - echo localhost > inventory
-    - sudo ansible-galaxy install --force -r requirements.yml -p roles
+    - sudo ansible-galaxy install --force -r requirements.yml
 
     # Check syntax
     - sudo ansible-playbook --syntax-check -i inventory test.yml
@@ -40,7 +47,10 @@ arch:
         || (echo 'Idempotence test: fail' && exit 1)
 
     # Further checks:
-    - powerpill --help || exit 1
+    - yaourt --help || exit 1
 
 script:
   - "bash .arch-travis/arch-travis.sh"
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/%

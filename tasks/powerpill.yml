@@ -1,4 +1,7 @@
 ---
+- name: Including yaml config files based on the distribution
+  include: distro_include.yml
+
 #- name: Create local user for makepkg
 #  sudo: yes
 #  user: name=makepkg shell=/bin/sh
